@@ -1,0 +1,68 @@
+body{
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.container{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid white;
+    height: 500px;
+    width:500px;
+}
+#input-field{
+    height: 60px;
+    width: 300px;
+    background-color: #535154;
+}
+#pwd{
+    margin-top: 15px;
+    margin-left: 18px;
+    height: 30px;
+    width: 220px;
+    border: transparent;
+    background-color: #535154;
+    font-size: 20px;
+    font-weight: bold;
+}
+#pwd:focus{
+    outline: none;
+    color: #fff;
+}
+p{
+    color: #535154;
+    font-weight: bolder;
+    font-size: 20px;
+}
+svg{
+    fill: #77E562;
+    height: 20px;
+    width: 30px;
+    margin-top: 5px;
+}
+svg:hover{
+    fill:#fff;
+    cursor: pointer;
+}
+#checklist-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    height: 300px;
+    width: 300px;
+    background-color: #535154;
+}
+.checklist-text{
+    color:#fff;
+    font-size: 15px;
+}
+#length{
+    height: 10px;
+    width: 220px;
+    background: red;
+}
