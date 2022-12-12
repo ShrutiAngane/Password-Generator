@@ -15,10 +15,30 @@
                 <input type="text" id="pwd" placeholder="P4$5W0rD!">
                 <svg id="Layer_1" height="512" viewBox="0 0 24 24" width="512" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="m15 20h-10a5.006 5.006 0 0 1 -5-5v-10a5.006 5.006 0 0 1 5-5h10a5.006 5.006 0 0 1 5 5v10a5.006 5.006 0 0 1 -5 5zm-10-18a3 3 0 0 0 -3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-10a3 3 0 0 0 -3-3zm19 17v-13a1 1 0 0 0 -2 0v13a3 3 0 0 1 -3 3h-13a1 1 0 0 0 0 2h13a5.006 5.006 0 0 0 5-5z"/></svg>
             </div>
-            <div id="checklist-container">
-                <p class="checklist-text">Character length</p>
-                <input type="range" id="length" min="0" max="20">
+            <div id="pwd-specifications">
+                <div id="pwd-length-container" class="margins">
+                    <p class="pwdlen textcolor">Character length</p>
+                <span id="charlength" class="lengthcolor">0</span>
+                <input type="range" id="slider" min="0" max="20" value="0" oninput="display_length(this.value)">
+                </div>
+                <div class="checklist-container margins">
+                <input type="checkbox" id="upper" name="upper" value="upper">
+                <label for="upper" class="textcolor"> Include Uppercase Letters</label><br>
+                <input type="checkbox" id="lower" name="lower" value="lower">
+                <label for="lower" class="textcolor">Include Lowercase Letters</label><br>
+                <input type="checkbox" id="numbers" name="numbers" value="numbers">
+                <label for="numbers" class="textcolor"> Include Numbers</label><br/>
+                <input type="checkbox" id="symbols" name="symbols" value="symbols">
+                <label for="symbols" class="textcolor"> Include Symbols</label>
+                </div>
+                <div class="pwd-strength-container margins">
+                    
 
+                </div>
+                <button class="generate margins">GENRATE</button>
+
+                
+                
             </div>
 
         </div>
