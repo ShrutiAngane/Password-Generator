@@ -120,8 +120,16 @@ svg:hover{
  .generate{
     background-color: #77E562;
     border: 0px;
-    height: 30px;
+    height: 40px;
     width: 272px;
+    font-weight: bold;
+ }
+ .generate:hover{
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #77E562;
+    color:#77E562;
+    font-size: 14px;
  }
  .margins{
     margin:0px 45px;
