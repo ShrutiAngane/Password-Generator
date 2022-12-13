@@ -30,18 +30,18 @@ body{
     outline: none;
     color: #fff;
 }
-p{
+.title{
     color: #535154;
     font-weight: bolder;
     font-size: 20px;
 }
-svg{
-    fill: #77E562;
+#Layer_1{
+    fill: #95DF8F;
     height: 20px;
     width: 30px;
     margin-top: 5px;
 }
-svg:hover{
+#Layer_1:hover{
     fill:#fff;
     cursor: pointer;
 }
@@ -57,40 +57,49 @@ svg:hover{
 }
 .textcolor{
     color:#fff;
-    font-size: 15px;
+    font-size: 20px;
 }
 .lengthcolor{
-    color:#77E562;
-    font-size: 20px;
+    color:#95DF8F;
+    font-size: 24px;
     font-weight: bolder;
 }
 .pwdlen{
     display: inline;
 }
 #charlength{
-    margin-left: 150px;
+    margin-left: 136px;
 }
 /*slider styling*/
 #slider{
   display: block;
   -webkit-appearance: none;
   appearance: none;
-  background: transparent;
+  background: black;
   margin-top: 15px;
-  width: 272px;
+  width: 312px;
+  border-radius: 5px;
+  background-image: linear-gradient(#95DF8F, #95DF8F);
+  background-size: 70% 100%;
+  background-repeat: no-repeat;
 }
 /***** Chrome, Safari, Opera, and Edge Chromium *****/
 #slider::-webkit-slider-runnable-track {
-    background: black;
     height: 0.5rem;
     border-radius: 10px;
+    -webkit-appearance: none;
+    box-shadow: none;
+    border: none;
+    background: transparent;
   }
   
   /******** Firefox ********/
   #slider::-moz-range-track {
-    background: black;
     height: 0.5rem;
     border-radius: 10px;
+    box-shadow: none;
+    border: none;
+    background: transparent;
   }
   /***** Thumb Styles *****/
 /***** Chrome, Safari, Opera, and Edge Chromium *****/
@@ -112,25 +121,101 @@ svg:hover{
     width: 1rem; 
     border-radius: 50%;    
  }
+ #slider::-webkit-slider-thumb:hover{
+    cursor: pointer;
+ } 
+ #slider::-moz-range-thumb:hover{
+    cursor:pointer;
+ }
+ .checklist-container{
+    display: grid;
+    grid-template-rows: repeat(1fr,4);
+    row-gap: 10px;
+ }
  .pwd-strength-container{
     height: 50px;
-    width: 272px;
+    width: 312px;
     background-color: black;
  }
+ /*styling checkboxes*/
+ input[type='checkbox']{
+    appearance: none;
+    height: 15px;
+    width: 15px;
+    background-color: transparent;
+    border: 1px solid white;
+    position: relative;
+    
+ }
+ input[type='checkbox']:hover{
+    cursor: pointer;
+ }
+ input[type='checkbox']::after{
+    content:'\2713';
+    position: absolute;
+    font-weight: bold;
+    font-size: 20px;
+    bottom:-2px;
+    display: none;
+ }
+ input[type='checkbox']:checked{
+    background-color: #95DF8F;
+ }
+ input[type='checkbox']:checked::after{
+    display: block;
+ }
  .generate{
-    background-color: #77E562;
+    background-color: #95DF8F;
     border: 0px;
     height: 40px;
-    width: 272px;
+    width: 312px;
     font-weight: bold;
+    font-size: 16px;
  }
  .generate:hover{
     cursor: pointer;
     background-color: transparent;
-    border: 2px solid #77E562;
-    color:#77E562;
-    font-size: 14px;
+    border: 2px solid #95DF8F;
+    color:#95DF8F;
+    font-size: 16px;
  }
  .margins{
-    margin:0px 45px;
+    margin:0px 44px;
+ }
+ .pwd-strength-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ }
+ .strength{
+    color: #535154;
+    font-weight: 600;
+    margin-left: 15px; 
+ }
+ #strength-text{
+    color:#fff;
+    font-weight: bolder;
+    visibility: hidden;
+    bottom: 0px;
+    position: relative;
+    margin-right: 2px; 
+      
+ }
+ .strength-indicator{
+    margin-right: 15px;
+ }
+ .indicator{
+    display: inline-block;
+    height: 20px;
+    width: 8px;
+    border: 1px solid white;
+    position:relative;
+    bottom: 5px;
+ }
+ #Outline{
+    height: 14px;
+    width: 15px;
+ }
+ #Outline:hover{
+    fill:#fff;
  }
