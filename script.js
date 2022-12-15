@@ -1,8 +1,55 @@
+let slider=document.getElementById('slider')
+let checkbox=Array.from(document.querySelectorAll('.checkbox'))
+let strength=document.getElementById('strength-text')
+let indicator=Array.from(document.getElementsByClassName('indicator'))
+let password=document.getElementById('pwd')
+let generate_btn=Array.from(document.getElementsByClassName('generate'))
+let copy=document.getElementById('Layer_1')
+let count=0;
+let charlength;
+let checked_boxes=new Array();
 function display_length(val){
     let len=document.getElementById('charlength')
     len.innerHTML=val;
+    charlength=val;
 }
-let slider=document.getElementById('slider')
+copy.addEventListener('click',()=>{
+    // console.log('hi')
+    password.select();
+    password.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(password.value)
+})
+generate_btn[0].addEventListener('click',()=>{
+    let l=charlength;
+    let specifications=checked_boxes
+    let upper='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    let lower='abcdefghijklmnopqrstuvwxyz';
+    let numbers='0123456789';
+    let symbols='!@#$%^&*()-+';
+    let requirements=specifications.map((elem)=>{
+        if(elem=='symbols'){
+            return symbols;
+        }else if(elem=='numbers'){
+            return numbers;
+        }else if(elem=='lower'){
+            return lower;
+        }else{
+            return upper
+        }
+    })
+    let j=0;
+    let result=''
+    while(j<requirements.length && result.length!=l){
+        let x=requirements[j]
+        result=result+x.charAt(Math.floor(Math.random()*x.length))
+        j==(requirements.length-1)?j=0:j=j+1;
+    }
+    password.value=result;
+    password.style.color='#fff';
+})
+
 slider.addEventListener('input',(e)=>{
     let target=e.target;
     const min = target.min;
@@ -11,18 +58,16 @@ slider.addEventListener('input',(e)=>{
     
     target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%'
 })
-
-let checkbox=Array.from(document.querySelectorAll('.checkbox'));
-let strength=document.getElementById('strength-text')
-let indicator=Array.from(document.getElementsByClassName('indicator'));
-console.log(indicator)
-let count=0
 checkbox.forEach((element)=>{
     element.addEventListener('change',()=>{
         if(element.checked==true){
-            strength.style.display='inline';
+            checked_boxes.push(element.value)
+            strength.style.display='inline-block';
             strength.style.visibility='visible';
-            strength.style.bottom='5px'
+            strength.style.bottom='2px'
+            indicator.forEach((elem)=>{
+                elem.style.top='4px';
+            })
             count=count+1;
             if(count==1){
                 strength.innerHTML='WEAK';
@@ -42,11 +87,20 @@ checkbox.forEach((element)=>{
             }           
         }
         else{
+            // indicator.forEach((elem)=>{
+            //     elem.style.top='2px';
+            // })
             count=count-1
+            let index=checked_boxes.indexOf(element.value)
+            checked_boxes.splice(index,1)
             if(count==0){
                 strength.style.visibility='invisible';
                 strength.style.display='none';
                 indicator[0].style.backgroundColor='transparent'
+                checked_boxes=[]
+                indicator.forEach((elem)=>{
+                elem.style.top='1px';
+            })
             }
             else if(count==3){
                 indicator[3].style.backgroundColor='transparent';
@@ -64,5 +118,6 @@ checkbox.forEach((element)=>{
                 }
             
         }
+        
     })
 })
