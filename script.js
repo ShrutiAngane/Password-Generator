@@ -1,26 +1,44 @@
+//declarations and accessing the DOM
 let slider=document.getElementById('slider')
 let checkbox=Array.from(document.querySelectorAll('.checkbox'))
 let strength=document.getElementById('strength-text')
 let indicator=Array.from(document.getElementsByClassName('indicator'))
 let password=document.getElementById('pwd')
 let generate_btn=Array.from(document.getElementsByClassName('generate'))
+let reset=Array.from(document.getElementsByClassName('reset'))
 let copy=document.getElementById('Layer_1')
 let count=0;
 let charlength;
 let checked_boxes=new Array();
+//displaying character length selected via slider
 function display_length(val){
     let len=document.getElementById('charlength')
     len.innerHTML=val;
     charlength=val;
 }
+//Resetting selected user inputs
+reset[0].addEventListener('click',()=>{
+    password.value='';
+    checkbox.forEach((elem)=>{
+        elem.checked=false;
+    })
+    strength.innerHTML='';
+    count=0;
+    indicator.forEach((elem)=>{
+        elem.style.backgroundColor='transparent'
+        elem.style.top='-2px';
+    })
+    checked_boxes=[]
+
+})
+//to copy the generated password to clipboard
 copy.addEventListener('click',()=>{
-    // console.log('hi')
     password.select();
     password.setSelectionRange(0, 99999); // For mobile devices
-
     // Copy the text inside the text field
     navigator.clipboard.writeText(password.value)
 })
+//logic for password generation
 generate_btn[0].addEventListener('click',()=>{
     let l=charlength;
     let specifications=checked_boxes
@@ -49,7 +67,7 @@ generate_btn[0].addEventListener('click',()=>{
     password.value=result;
     password.style.color='#fff';
 })
-
+//progress bar in the slider
 slider.addEventListener('input',(e)=>{
     let target=e.target;
     const min = target.min;
@@ -58,6 +76,7 @@ slider.addEventListener('input',(e)=>{
     
     target.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%'
 })
+//styling the strength indicator based on checkbox values
 checkbox.forEach((element)=>{
     element.addEventListener('change',()=>{
         if(element.checked==true){
@@ -87,9 +106,6 @@ checkbox.forEach((element)=>{
             }           
         }
         else{
-            // indicator.forEach((elem)=>{
-            //     elem.style.top='2px';
-            // })
             count=count-1
             let index=checked_boxes.indexOf(element.value)
             checked_boxes.splice(index,1)

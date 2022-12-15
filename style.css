@@ -52,7 +52,6 @@ body{
 #pwd-specifications{
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
     justify-content:space-evenly;
     margin-top: 20px;
     height: 400px;
@@ -222,10 +221,50 @@ body{
     position:relative;
     bottom: 5px;
  }
+ #generate_svg{
+   height: 14px;
+   width: 15px;
+   margin-left: 5px;
+ }
  #Outline{
     height: 14px;
     width: 15px;
+    fill:#95DF8F;
+    margin-left: 5px;
  }
  #Outline:hover{
     fill:#fff;
+    cursor: pointer;
+ }
+ /*responsiveness*/
+ @media screen and (max-width:550px) {
+   .margins{
+      margin: 0px 35px;
+   }
+   #input-field {
+      height: 60px;
+      width: 300px;
+   }
+   #pwd-specifications {
+      height: 400px;
+      width: 300px;  
+  }
+  #pwd{
+   width:200px;
+  }
+  .textcolor{
+   font-size:15px;
+  }
+  .lengthcolor{
+   font-size: 21px;
+  }
+  #charlength{
+   margin-left: 90px;
+  }
+  #slider{
+   width:230px;
+  }
+  .pwd-strength-container,.generate {
+   width: 230px;
+}
  }
