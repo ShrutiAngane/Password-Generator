@@ -3,6 +3,7 @@ let slider=document.getElementById('slider')
 let checkbox=Array.from(document.querySelectorAll('.checkbox'))
 let strength=document.getElementById('strength-text')
 let indicator=Array.from(document.getElementsByClassName('indicator'))
+let len=document.getElementById('charlength')
 let password=document.getElementById('pwd')
 let generate_btn=Array.from(document.getElementsByClassName('generate'))
 let reset=Array.from(document.getElementsByClassName('reset'))
@@ -12,7 +13,7 @@ let charlength;
 let checked_boxes=new Array();
 //displaying character length selected via slider
 function display_length(val){
-    let len=document.getElementById('charlength')
+    // let len=document.getElementById('charlength')
     len.innerHTML=val;
     charlength=val;
 }
@@ -28,7 +29,10 @@ reset[0].addEventListener('click',()=>{
         elem.style.backgroundColor='transparent'
         elem.style.top='-2px';
     })
-    checked_boxes=[]
+    checked_boxes=[];
+    len.innerHTML='0';
+    slider.style.backgroundSize='0% 100%';
+    slider.value='0';
 
 })
 //to copy the generated password to clipboard
