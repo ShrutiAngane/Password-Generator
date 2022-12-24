@@ -16,7 +16,7 @@ body{
     flex-direction: column;
 }
 #modal{
-   height: 160px;
+   height: 128px;
    width: 360px;
    border: 1px solid #fff;
    border-radius: 10px;
@@ -301,6 +301,7 @@ body{
    width: 230px;
 }
 #modal{
+   height:160px;
    width: 250px;
 }
 #alert{
