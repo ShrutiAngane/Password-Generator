@@ -4,7 +4,7 @@
 }
 body{
     height: 100vh;
-    background-color: black;
+    background: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,6 +14,38 @@ body{
     display: flex;
     align-items: center;
     flex-direction: column;
+}
+#modal{
+   height: 160px;
+   width: 360px;
+   border: 1px solid #fff;
+   border-radius: 10px;
+   position: absolute;
+   display: grid;
+   grid-template-columns: repeat(6,1fr);
+   color:white;
+   background-color: #535154;
+   z-index: 3;
+   visibility: hidden;
+   
+}
+#modalbtn{
+   height:40px;
+   width:80px;
+   grid-column: 3/5;
+   margin-top: -22px;
+}
+#modaltext{
+   grid-column: 2/7;
+   margin-top: 33px;
+}
+#alert{
+   height: 18px;
+   width: 18px;
+   fill: yellow;
+   margin-left: 34px;
+   margin-top: 33px;
+   grid-column: 1/2;
 }
 #input-field{
     height: 60px;
@@ -237,9 +269,10 @@ body{
     cursor: pointer;
  }
  /*responsiveness*/
- @media screen and (max-width:550px) {
+ 
+ @media screen and (max-width:550px){
    .margins{
-      margin: 0px 35px;
+      margin: 0px 34px;
    }
    #input-field {
       height: 60px;
@@ -267,4 +300,11 @@ body{
   .pwd-strength-container,.generate {
    width: 230px;
 }
+#modal{
+   width: 250px;
+}
+#alert{
+   margin-left: 18px;
  }
+ }
+ 

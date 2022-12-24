@@ -1,7 +1,10 @@
 //declarations and accessing the DOM
+let container=document.getElementsByClassName('container')[0];
 let slider=document.getElementById('slider')
 let checkbox=Array.from(document.querySelectorAll('.checkbox'))
 let strength=document.getElementById('strength-text')
+let modal=document.getElementById('modal')
+let modalbtn=document.getElementById('modalbtn');
 let indicator=Array.from(document.getElementsByClassName('indicator'))
 let len=document.getElementById('charlength')
 let password=document.getElementById('pwd')
@@ -12,10 +15,26 @@ let count=0;
 let charlength;
 let checked_boxes=new Array();
 //displaying character length selected via slider
+
 function display_length(val){
-    // let len=document.getElementById('charlength')
     len.innerHTML=val;
     charlength=val;
+}
+modalbtn.addEventListener('click',()=>{
+    modal.style.visibility='hidden';
+    container.style.opacity='1'
+})
+function display_modal(specifications){
+    console.log('hi')
+    let modaltext=document.getElementById('modaltext');
+    modal.style.visibility='visible';
+    if(specifications.length==0){
+        modaltext.innerText=`Please select the password requirements`;
+    }
+    else{
+        modaltext.innerText=`Password length should be greater than ${specifications.length}`;
+    }
+    container.style.opacity='0.2';
 }
 //Resetting selected user inputs
 reset[0].addEventListener('click',()=>{
@@ -44,12 +63,16 @@ copy.addEventListener('click',()=>{
 })
 //logic for password generation
 generate_btn[0].addEventListener('click',()=>{
-    let l=charlength;
+    let l=slider.value;
     let specifications=checked_boxes
     let upper='ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let lower='abcdefghijklmnopqrstuvwxyz';
     let numbers='0123456789';
     let symbols='!@#$%^&*()-+';
+    if(l<specifications.length || specifications.length==0){
+        display_modal(specifications)
+    }
+    else{
     let requirements=specifications.map((elem)=>{
         if(elem=='symbols'){
             return symbols;
@@ -70,6 +93,7 @@ generate_btn[0].addEventListener('click',()=>{
     }
     password.value=result;
     password.style.color='#fff';
+}
 })
 //progress bar in the slider
 slider.addEventListener('input',(e)=>{
